@@ -65,7 +65,7 @@ for epoch in range(epochs):
 
 
 
-# STEP 6: Take User Input
+# STEP 5: Take User Input
 print("\n\n---STUDENT MARKS PREDICTION---\n")
 
 hours = float(input("Enter Study Hours: "))
