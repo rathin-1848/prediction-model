@@ -1,82 +1,81 @@
-#Project: STUDENT MARKS PREDICTION SIMPLE MODEL
-#MACHINE: LEARNING FORM SCRATCH
-#ALGORITHM: LINEAR REGRESSION
 
+# Multiple Input Student Marks Prediction
+# Silent Training Model
 
-#STEP-1: Training Daatset
+# Dataset
+students = [
+    [1, 50, 30],
+    [2, 55, 35],
+    [3, 60, 40],
+    [4, 65, 45],
+    [5, 70, 50],
+    [6, 75, 55],
+    [7, 80, 60],
+    [8, 85, 65],
+    [9, 90, 70],
+    [10, 95, 75]
+]
 
-study_hours = [1,2,3,4,5,6]
+final_marks = [35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
 
-actual_marks = [15,25,35,45,55,65]
+# Training Data
+train_x = students[:8]
+train_y = final_marks[:8]
 
-#STEP-2: Initialize Model Parameters
-
-weight = 0.0
-
+# Model Parameters
+weights = [0.0, 0.0, 0.0]
 bias = 0.0
 
+learning_rate = 0.00001
+epochs = 10000
+n = len(train_x)
 
-#STEP-3: Traning Configuaratuon
-
-learning_rate = 0.01
-
-epochs = 5000
-
-n =len(study_hours)
-
-
-#STEP-4: Start Model Traning
-
-
-
+# Silent Training
 for epoch in range(epochs):
 
-    total_error_weight = 0
-    total_error_bias = 0
+    dw = [0.0, 0.0, 0.0]
+    db = 0.0
 
-    #process every traning example
     for i in range(n):
 
-        x = study_hours[i]
-        actual = actual_marks[i]
+        prediction = bias
 
-        #prediction
+        for j in range(3):
+            prediction += weights[j] * train_x[i][j]
 
-        predicted = weight * x + bias
-        error = predicted - actual
+        error = prediction - train_y[i]
 
-        # Calculate Gradients
+        for j in range(3):
+            dw[j] += error * train_x[i][j]
 
-        total_error_weight += error * x
-        total_error_bias += error
+        db += error
 
+    for j in range(3):
+        dw[j] = (2 / n) * dw[j]
+        weights[j] -= learning_rate * dw[j]
 
-# Average Gradients
-
-    dw = (2 / n) * total_error_weight
-
-    db = (2 / n) * total_error_bias
-
-
-    # Update Model Parameters
-
-    weight = weight - learning_rate * dw
-    bias = bias - learning_rate * db
+    db = (2 / n) * db
+    bias -= learning_rate * db
 
 
-
-# STEP 5: Take User Input
-print("\n\n---STUDENT MARKS PREDICTION---\n")
+# User Input
+print("\n===== STUDENT MARKS PREDICTOR =====")
 
 hours = float(input("Enter Study Hours: "))
+attendance = float(input("Enter Attendance (%): "))
+previous_marks = float(input("Enter Previous Marks: "))
 
-if hours<0:
-    print("Invalid Input! Study Hours cannot be negative.")
-    exit()
+if hours < 0 or not 0 <= attendance <= 100 or not 0 <= previous_marks <= 100:
+    print("Invalid Input!")
+
 else:
-    prediction = weight * hours + bias
+    new_student = [hours, attendance, previous_marks]
 
-    #limit the prediction to a maximum of 100 marks
+    prediction = bias
+
+    for j in range(3):
+        prediction += weights[j] * new_student[j]
+
     prediction = max(0, min(100, prediction))
 
-print("\nPredicted Marks:", round(prediction, 2))
+    print("\nPredicted Final Marks:", round(prediction, 2), "/ 100")
