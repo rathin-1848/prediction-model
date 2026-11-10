@@ -1,90 +1,118 @@
-# 🎓 Student Marks Prediction Using Linear Regression
+# 🎓 Multiple Input Student Marks Prediction
 
 ## 📌 About the Project
 
-This is a beginner-friendly Machine Learning project that predicts a student's marks based on the number of study hours.
+This is a beginner-friendly Machine Learning project that predicts a student's final marks based on three different input features:
 
-The project implements **Linear Regression from Scratch using Python**, without using any Machine Learning libraries such as Scikit-learn.
+- Study Hours
+- Attendance Percentage
+- Previous Exam Marks
 
-The main goal of this project is to understand how a Machine Learning model learns from training data and makes predictions.
+The model is implemented completely from scratch using Python without using Machine Learning libraries like Scikit-learn, NumPy, or TensorFlow.
 
-## ⚙️ Algorithm Used
+It uses **Multiple Linear Regression** to learn the relationship between multiple input features and the final marks.
+
+## ⚙️ Algorithm & Technology
 
 - **Machine Learning Type:** Supervised Learning
-- **Algorithm:** Linear Regression
+- **Algorithm:** Multiple Linear Regression
+- **Training Method:** Gradient Descent
 - **Programming Language:** Python
-- **Learning Method:** Gradient Descent
+- **Model Type:** Multiple Input Prediction Model
 
-## 📊 Training Dataset
+## 📊 Dataset
 
-The model is trained using the following sample dataset:
+The model uses the following sample dataset:
 
-| Study Hours | Actual Marks |
+| Study Hours | Attendance (%) | Previous Marks | Final Marks |
+|---:|---:|---:|---:|
+| 1 | 50 | 30 | 35 |
+| 2 | 55 | 35 | 40 |
+| 3 | 60 | 40 | 45 |
+| 4 | 65 | 45 | 50 |
+| 5 | 70 | 50 | 55 |
+| 6 | 75 | 55 | 60 |
+| 7 | 80 | 60 | 65 |
+| 8 | 85 | 65 | 70 |
+| 9 | 90 | 70 | 75 |
+| 10 | 95 | 75 | 80 |
+
+## 🧠 How the Model Works
+
+1. Loads the student dataset.
+2. Splits the dataset into training data.
+3. Initializes three weights and one bias.
+4. Starts training using Gradient Descent.
+5. Calculates predictions for each training example.
+6. Calculates prediction errors.
+7. Computes gradients for all weights and bias.
+8. Updates model parameters over multiple epochs.
+9. Takes new student information as input.
+10. Predicts the student's final marks.
+
+## 🔍 Input Features
+
+| Feature | Description |
 |---|---|
-| 1 | 15 |
-| 2 | 25 |
-| 3 | 35 |
-| 4 | 45 |
-| 5 | 55 |
-| 6 | 65 |
-
-## 🧠 How It Works
-
-1. Load the training dataset.
-2. Initialize weight and bias.
-3. Set the learning rate and number of epochs.
-4. Calculate predictions.
-5. Calculate errors and gradients.
-6. Update weight and bias using Gradient Descent.
-7. Take study hours as user input.
-8. Predict the student's marks.
+| Study Hours | Number of hours spent studying |
+| Attendance | Student's attendance percentage |
+| Previous Marks | Marks obtained in the previous examination |
 
 ## 🚀 Features
 
+- Multiple input-based prediction.
 - Linear Regression implemented from scratch.
-- Uses Gradient Descent for model training.
-- Takes study hours as user input.
-- Predicts marks based on learned parameters.
-- Prevents negative study-hour inputs.
-- Limits predicted marks between 0 and 100.
+- Gradient Descent optimization.
+- Silent model training (no training logs).
+- Three independent input features.
+- Input validation.
+- Predicted marks limited between 0 and 100.
 
 ## ▶️ How to Run
 
-1. Clone this repository.
-2. Open the project folder.
-3. Run the Python file.
-4. Enter your study hours to get a prediction.
+**1. Clone the repository**
 
-## 💻 Example
+**2. Open the project folder**
 
---- STUDENT MARKS PREDICTION ---
+**3. Run the Python file**
 
-Enter Study Hours: 7
+**4. Enter student information**
 
-Predicted Marks: 75.00
+## 💻 Example Output
 
-*Example output based on the sample training dataset.*
+
+===== STUDENT MARKS PREDICTOR =====
+
+Enter Study Hours: 6
+Enter Attendance (%): 75
+Enter Previous Marks: 55
+
+Predicted Final Marks: 60.00 / 100
+
+
+*Example output based on the sample dataset.*
 
 ## 📚 What I Learned
 
-- Basics of Machine Learning.
-- Supervised Learning.
-- Linear Regression.
-- Weight and Bias.
-- Prediction and Error Calculation.
+- Multiple Linear Regression.
+- Working with multiple input features.
+- Weight and Bias optimization.
 - Gradient Descent.
-- Model Training using Python loops.
+- Training and testing data separation.
+- Model prediction using Python loops.
+- Input validation.
 
 ## 🔮 Future Improvements
 
-- Add more training data.
-- Include attendance and previous exam marks.
-- Implement model evaluation.
-- Create a simple graphical user interface.
-- Compare predictions with actual marks.
+- Implement model evaluation using MAE and MSE.
+- Add more realistic student datasets.
+- Improve prediction accuracy.
+- Add data visualization.
+- Build a graphical user interface.
+- Compare Single Linear Regression and Multiple Linear Regression.
 
 ## 👨‍💻 Author
 
-Created as a beginner Machine Learning project to understand the fundamentals of Linear Regression from scratch.
+Created as part of my journey to learn Machine Learning from scratch using Python.
 
-**Learning Machine Learning one project at a time!** 🚀
+**Learning by building, one ML project at a time!** 🚀
